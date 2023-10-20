@@ -1,0 +1,16 @@
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
+
+@JsonTypeInfo(
+  use = JsonTypeInfo.Id.NAME,
+  include = JsonTypeInfo.As.PROPERTY,
+  property = "type"
+)
+@JsonSubTypes({
+  @JsonSubTypes.Type(value = Integer.class, name = "integer"),
+  @JsonSubTypes.Type(value = String.class, name = "string"),
+  // Add other primitive types as needed
+})
+public interface PrimitiveTypeMixin {
+  // This interface is just a marker, no implementation needed
+}
